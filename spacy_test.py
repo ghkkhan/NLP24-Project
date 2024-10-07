@@ -1,11 +1,11 @@
-import spacy
+import spacy # type: ignore
 nlp = spacy.load("en_core_web_sm")
 
-import nltk
+import nltk # type: ignore
 import random
-from nltk.corpus import movie_reviews
-from nltk.corpus import names
-from nltk import word_tokenize, pos_tag, ne_chunk
+from nltk.corpus import movie_reviews # type: ignore
+from nltk.corpus import names # type: ignore
+from nltk import word_tokenize, pos_tag, ne_chunk # type: ignore
 
 from tmdb_api import get_common_films_from_name_array
 
