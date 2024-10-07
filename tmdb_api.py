@@ -1,10 +1,10 @@
-import requests
+import requests #type: ignore
 import os 
 import json
 from collections import Counter
 headers = {
     "accept": "application/json",
-    "Authorization": f"Bearer {os.getenv("tmdb_auth")}"
+    "Authorization": f"Bearer {os.getenv("TMDB_AUTH")}"
 }
 
 # returns result from querying tmdb for person information
