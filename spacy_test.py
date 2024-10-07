@@ -41,6 +41,7 @@ for entity, category in entities:
         name_array.append(name)
     #print(f"{entity}: {category}")
 
+print(f"Formattable names detected: {len(name_array)}")
 potential_titles = get_common_films_from_name_array(name_array)
 
 
