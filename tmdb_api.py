@@ -9,12 +9,9 @@ headers = {
 
 # returns result from querying tmdb for person information
 # NOTE: returns array of results. if two notable people have the same name, need to figure out how to differentiate 
-def get_person_id_by_name(fname, lname):
-    if fname[0].isupper():
-        fname = fname[0].upper() + fname[1:]
-    if lname[0].islower():
-        lname = lname[0].upper() + lname[1:]
-    url = f"https://api.themoviedb.org/3/search/person?query={fname}%20{lname}&include_adult=false&language=en-US&page=1"
+def get_person_id_by_name(name):
+    name = name.replace(" ", "%20")
+    url = f"https://api.themoviedb.org/3/search/person?query={name}&include_adult=false&language=en-US&page=1"
     response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
@@ -27,8 +24,6 @@ def get_person_id_by_name(fname, lname):
             top_results.append(result["id"])
         return top_results
     else:
-        print("WE HAVE AN ISSUE AND IT IS")
-        print(response.status_code)
         return response.status_code
 
 #look ahead determines whether to look at more than 1 person
@@ -139,13 +134,13 @@ def get_common_films_from_name_array(name_array):
 
 
     # remove duplicates
-    name_array = set(tuple(name) for name in name_array)
+    name_array = set(name_array)
 
     
     person_array = []
     # name_array should be an array of fname, lname pairs
     for name in name_array:
-        person_id_list = get_person_id_by_name(name[0], name[1])
+        person_id_list = get_person_id_by_name(name)
         first_person_info = get_relevent_info_from_id(person_id_list)
         if len(first_person_info) == 0:
             continue

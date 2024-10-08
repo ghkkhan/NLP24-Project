@@ -36,10 +36,8 @@ for ent in doc.ents:
 entityset = set(entities)
 name_array = []
 for entity, category in entities:
-    name = entity.split()
-    if len(name) == 2:
-        name_array.append(name)
-    #print(f"{entity}: {category}")
+    print(f"{entity}: {category}")
+    name_array.append(entity)
 
 print(f"Formattable names detected: {len(name_array)}")
 potential_titles = get_common_films_from_name_array(name_array)
