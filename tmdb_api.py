@@ -126,7 +126,10 @@ def get_common_films(person_list):
     for film_id in all_ids_counted_sorted:
         if film_id[1] < 2: 
             break
-        all_titles.append(get_film_title_from_id(film_id[0]))
+        title_with_appearances = dict()
+        title_with_appearances["Title"] = get_film_title_from_id(film_id[0])
+        title_with_appearances["Appears"] = film_id[1]
+        all_titles.append(title_with_appearances)
 
     return all_titles
 
