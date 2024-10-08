@@ -45,4 +45,9 @@ potential_titles = get_common_films_from_name_array(name_array)
 
 print(movie_reviews.raw(the_file))
 print("The above review is of one of these possibilities:")
-print(potential_titles)
+#print(potential_titles)
+
+for index, title in enumerate(potential_titles):
+    if index > 10:
+        break
+    print(f"{title["Title"]} ({title["Appears"]})")
