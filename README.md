@@ -30,8 +30,12 @@ python -m spacy download en_core_web_sm
 export TMDB_AUTH={YOUR KEY HERE} # on linux/macos for temporary use
 ```
 
-5) Run
+6) Obtain aclImdb folder and place in project root 
++ Download through https://ai.stanford.edu/~amaas/data/sentiment/
+
+7) Run
 ```
-python spacy_test.py
+python main.py {arg} # 0 for movie_reviews nltk corpus or 1 for IMDB random files
+
 ```
 
