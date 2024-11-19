@@ -3,6 +3,7 @@ nlp = spacy.load("en_core_web_sm")
 
 import nltk # type: ignore
 import random
+import os
 from nltk.corpus import movie_reviews # type: ignore
 from nltk.corpus import names # type: ignore
 from nltk import word_tokenize, pos_tag, ne_chunk # type: ignore
@@ -16,7 +17,7 @@ def get_all_names():
     all_names_capitalized = set(male_names + female_names)
     all_names = {name.lower() for name in all_names_capitalized}
     return all_names
-    
+
 
 def get_corpus_text():
     all_files = movie_reviews.fileids()
@@ -25,7 +26,15 @@ def get_corpus_text():
     return review
 
 def get_imdb_text():
-    
+    directory = "aclImdb/test/pos/"
+    files = [
+        f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))
+    ]
+    if files:
+        file = random.choice(files)
+        with open(os.path.join(directory, file), "r") as fi:
+            content = fi.read()
+            return content
 
 def get_name_array(review_text):
     # SPACY-TUTORIAL: https://www.wisecube.ai/blog/named-entity-recognition-ner-with-python/
@@ -47,7 +56,6 @@ def get_name_array(review_text):
     return name_array
 
 
-
 def get_films_from_review(source):
     
     all_names = get_all_names()
@@ -57,7 +65,7 @@ def get_films_from_review(source):
         # this will change depending on the argument provided 
         review_text = get_corpus_text()
     elif (source == "imdb"):
-        review_text = get_corpus_text()
+        review_text = get_imdb_text()
         
 
     name_array = get_name_array(review_text)
