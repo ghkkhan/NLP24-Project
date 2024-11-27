@@ -1,6 +1,6 @@
 # the idea here is to either use stuff from the movie_reviews corpus OR 
 # from the IMDB collection of text 
-from spacy_test import get_films_from_review
+from src.spacy_test import get_films_from_review
 
 import sys 
 
