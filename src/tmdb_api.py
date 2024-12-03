@@ -134,11 +134,6 @@ def get_common_films(person_list):
     return all_titles
 
 def get_common_films_from_name_array(name_array):
-
-
-    # remove duplicates
-    name_array = set(name_array)
-
     
     person_array = []
     # name_array should be an array of fname, lname pairs
